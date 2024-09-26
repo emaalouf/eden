@@ -9,35 +9,35 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     unzip \
     curl \
-    python \
-    python-dev \
-    python-pip \
-    python-matplotlib \
-    python-lxml \
-    python-numpy \
-    python-dateutil \
-    python-gdal \
-    python-yaml \
-    python-serial \
-    python-xlwt \
-    python-shapely \
-    python-pil \
-    python-reportlab \
-    python-tweepy \
-    python-xlrd \
-    python-boto \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-matplotlib \
+    python3-lxml \
+    python3-numpy \
+    python3-dateutil \
+    python3-gdal \
+    python3-yaml \
+    python3-serial \
+    python3-xlwt \
+    python3-shapely \
+    python3-pil \
+    python3-reportlab \
+    python3-tweepy \
+    python3-xlrd \
+    python3-boto \
     ansible \
     && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip to ensure compatibility with modern Python packages
-RUN pip install --upgrade pip
+RUN python3 -m pip install --upgrade pip
 
-# Install required Python packages via pip (for Python 2)
-RUN pip install "selenium>=2.23.0" "sunburnt>=0.6" "TwitterSearch>=1.0" "requests>=2.3.0" "Django==2.2.24" "wtforms==2.3.3"
+# Install required Python packages via pip (for Python 3)
+RUN pip3 install "selenium>=2.23.0" "sunburnt>=0.6" "TwitterSearch>=1.0" "requests>=2.3.0" "Django==3.2.13" "wtforms==2.3.3"
 
-# Download and extract the web2py version compatible with Python 2
-RUN curl -o web2py.zip https://codeload.github.com/web2py/web2py/zip/R-2.9.11 && unzip web2py.zip \
-    && mv web2py-R-2.9.11 /home/web2py && rm web2py.zip
+# Download and extract the web2py version compatible with Python 3
+RUN curl -o web2py.zip https://codeload.github.com/web2py/web2py/zip/R-2.21.1 && unzip web2py.zip \
+    && mv web2py-R-2.21.1 /home/web2py && rm web2py.zip
 
 # Copy the SahanaEden application code into the correct location within web2py
 COPY . /home/web2py/applications/eden
@@ -55,5 +55,5 @@ ENV PYTHONPATH=/home/web2py/
 # Set the admin password as an environment variable
 ENV WEB2PY_PASSWORD="p@Ssw0rd@221"
 
-# Set the command to run the web2py server (using Python 2) on port 8000 with the admin password
-CMD ["python", "/home/web2py/web2py.py", "-i", "0.0.0.0", "-p", "8000", "-a", "p@Ssw0rd@221"]
+# Set the command to run the web2py server (using Python 3) on port 8000 with the admin password
+CMD ["python3", "/home/web2py/web2py.py", "-i", "0.0.0.0", "-p", "8000", "-a", "p@Ssw0rd@221"]
