@@ -34,9 +34,9 @@ RUN python3 -m pip install --upgrade pip
 # Install required Python packages via pip (for Python 3)
 RUN pip3 install "selenium>=2.23.0" "sunburnt>=0.6" "TwitterSearch>=1.0" "requests>=2.3.0" "Django==3.2.13" "wtforms==2.3.3" "xlwt>=1.3.0"
 
-# Download and extract the web2py version compatible with Python 3
-RUN curl -o web2py.zip https://codeload.github.com/web2py/web2py/zip/R-2.21.1 && unzip web2py.zip \
-    && mv web2py-R-2.21.1 /home/web2py && rm web2py.zip
+# Download and extract the web2py version compatible with Python 3 from a stable source
+RUN curl -o web2py.zip https://web2py.com/examples/static/web2py_src.zip && unzip web2py.zip \
+    && mv web2py /home/web2py && rm web2py.zip
 
 # Copy the SahanaEden application code into the correct location within web2py
 COPY . /home/web2py/applications/eden
