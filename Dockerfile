@@ -38,7 +38,6 @@ RUN pip install selenium>=2.23.0 \
     TwitterSearch>=1.0 \
     requests>=2.3.0 \
     Django==2.2.24 \   # Ensure compatibility with Django and web2py
-    wtforms==2.3.3     # If you are using WTForms for form validation
 
 # Download and extract the web2py version compatible with Python 2
 RUN curl -o web2py.zip https://codeload.github.com/web2py/web2py/zip/R-2.9.11 && unzip web2py.zip \
