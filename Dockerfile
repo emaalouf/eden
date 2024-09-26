@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     python3-gdal \
     python3-yaml \
     python3-serial \
-    python3-xlwt \
     python3-shapely \
     python3-pil \
     python3-reportlab \
@@ -33,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 RUN python3 -m pip install --upgrade pip
 
 # Install required Python packages via pip (for Python 3)
-RUN pip3 install "selenium>=2.23.0" "sunburnt>=0.6" "TwitterSearch>=1.0" "requests>=2.3.0" "Django==3.2.13" "wtforms==2.3.3"
+RUN pip3 install "selenium>=2.23.0" "sunburnt>=0.6" "TwitterSearch>=1.0" "requests>=2.3.0" "Django==3.2.13" "wtforms==2.3.3" "xlwt>=1.3.0"
 
 # Download and extract the web2py version compatible with Python 3
 RUN curl -o web2py.zip https://codeload.github.com/web2py/web2py/zip/R-2.21.1 && unzip web2py.zip \
