@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 """
     Machine-specific settings
     All settings which are typically edited for a specific machine should be done here
@@ -30,19 +30,19 @@ settings.base.template = "default"
 #settings.database.db_type = "postgres"
 settings.database.db_type = "mysql"
 # Uncomment to use a different host
-settings.database.host = "generalusedb-do-user-2807818-0.m.db.ondigitalocean.com"
+settings.database.host = os.getenv("DB_HOST", "generalusedb-do-user-2807818-0.m.db.ondigitalocean.com")
 # Uncomment to use a different port
-settings.database.port = 25060
+settings.database.port = int(os.getenv("DB_PORT", 25060))
 #settings.database.port = 5432
 # Uncomment to select a different name for your database
-settings.database.database = "Sahana"
+settings.database.database = os.getenv("DB_NAME", "Sahana")
 # Uncomment to select a different username for your database
-settings.database.username = "doadmin"
+settings.database.username = os.getenv("DB_USER", "doadmin")
 # Uncomment to set the password
 # NB Web2Py doesn't like passwords with an @ in them
-settings.database.password = "AVNS_XawPdK6m-3tWBvJ0hmi"
+settings.database.password = os.getenv("DB_PASSWORD", "AVNS_XawPdK6m-3tWBvJ0hmi")
 # Uncomment to use a different pool size
-#settings.database.pool_size = 30
+settings.database.pool_size = 30
 # Do we have a spatial DB available? (currently supports PostGIS. Spatialite to come.)
 #settings.gis.spatialdb = True
 
