@@ -52,5 +52,8 @@ EXPOSE 8000
 # Set the Python path to make sure web2py finds all required modules
 ENV PYTHONPATH=/home/web2py/
 
-# Set the command to run the web2py server (using Python 2) on port 8000
-CMD ["python", "/home/web2py/web2py.py", "-i", "0.0.0.0", "-p", "8000", "-a", "eden"]
+# Set the admin password as an environment variable
+ENV WEB2PY_PASSWORD="p@Ssw0rd@221"
+
+# Set the command to run the web2py server (using Python 2) on port 8000 with the admin password
+CMD ["python", "/home/web2py/web2py.py", "-i", "0.0.0.0", "-p", "8000", "-a", "p@Ssw0rd@221"]
